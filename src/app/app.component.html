@@ -1,0 +1,33 @@
+<div class="gm-app">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span fxFlex>PhoneBook App</span>
+      <mat-icon role="button" aria-label="Upload Phone Book" class="toolbar-icon" matTooltip="Download" (click)="downloadPhonebook()">save</mat-icon>
+      <label class="gm-button mat-body-strong" role="button" aria-label="Upload Phone Book" for="uploader" fxLayout="row">
+        <mat-icon class="toolbar-icon" matTooltip="Upload">cloud_upload</mat-icon>
+      </label>
+      <input type="file" (change)="uploadPhonebook($event.target)" accept=".csv" id="uploader">
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div class="gm-content" fxFlexFill>
+    <mat-list>
+      <mat-list-item class="gm-list-item" *ngFor="let entry of entries">
+        <mat-icon mat-list-icon>account_circle</mat-icon>
+        <h4 mat-line>{{entry.name}}</h4>
+        <p mat-line>{{entry.number}}</p>
+        <button mat-icon-button aria-label="Edit Contact" (click)="editEntry(entry.id)" matTooltip="Edit">
+          <mat-icon>create</mat-icon>
+        </button>
+        <button mat-icon-button aria-label="Delete Contact" (click)="deleteEntry(entry.id)" matTooltip="Delete">
+          <mat-icon>delete_outline</mat-icon>
+        </button>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-list>
+
+    <button id="creation-fab" mat-fab aria-label="Add Contact" matTooltip="Add Contact" (click)="addEntry()">
+        <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>
